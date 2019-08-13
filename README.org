@@ -2,5 +2,18 @@
 
 git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d
 
+编辑 ~/.emacs.d/core/core-packages.el 把源改成国内的源。下面用的是腾讯的源
+
+`(("gnu"          . "http://mirrors.cloud.tencent.com/elpa/gnu/")
+ ("melpa"        . "http://mirrors.cloud.tencent.com/elpa/melpa/")
+ ("org"          . "http://mirrors.cloud.tencent.com/elpa/org/")))
+ 
 ~/.emacs.d/bin/doom quickstart
 
+ 编辑 ~/.bash_profile 文件，把 ~/.emacs.d/bin 加入PATH路径
+vi ~/.bash_profile
+## doom emacs
+export PATH=$PATH:~/.emacs.d/bin
+
+修改配置后要运行 doom  refresh
+遇到问题可以运行 doom-doctor
