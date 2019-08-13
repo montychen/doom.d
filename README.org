@@ -1,19 +1,24 @@
-*安装 Doom Emacs Develop 分支
+* 安装 Doom Emacs Develop 分支
 
-git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d
+1. git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d
 
-编辑 ~/.emacs.d/core/core-packages.el 把源改成国内的源。下面用的是腾讯的源
-
+2. 编辑 ~/.emacs.d/core/core-packages.el 把源改成国内的源。下面用的是腾讯的源
+#+begin_src elisp
 `(("gnu"          . "http://mirrors.cloud.tencent.com/elpa/gnu/")
- ("melpa"        . "http://mirrors.cloud.tencent.com/elpa/melpa/")
- ("org"          . "http://mirrors.cloud.tencent.com/elpa/org/")))
- 
-~/.emacs.d/bin/doom quickstart
+  ("melpa"        . "http://mirrors.cloud.tencent.com/elpa/melpa/")
+  ("org"          . "http://mirrors.cloud.tencent.com/elpa/org/")))
+#+end_src
 
- 编辑 ~/.bash_profile 文件，把 ~/.emacs.d/bin 加入PATH路径
+3. ~/.emacs.d/bin/doom quickstart
+
+4. 编辑 ~/.bash_profile 文件，把 ~/.emacs.d/bin 加入PATH路径
+#+begin_src bash
 vi ~/.bash_profile
 ## doom emacs
 export PATH=$PATH:~/.emacs.d/bin
+#+end_src
 
+5. 更新配置、查找问题
 修改配置后要运行 doom  refresh
-遇到问题可以运行 doom-doctor
+
+遇到问题可以运行 doom-doctor4

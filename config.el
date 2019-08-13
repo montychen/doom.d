@@ -42,3 +42,12 @@
         (indent-buffer)
         (message "Indent buffer.")))))
 (global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+
+
+;;光标在括号内时就高亮包含内容的两个括号
+(defadvice show-paren-function (around fix-show-paren-function activate)
+  (cond ((looking-at-p "\\s(") ad-do-it)
+        (t (save-excursion
+             (ignore-errors (backward-up-list))
+             ad-do-it)))
+  )
