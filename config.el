@@ -23,16 +23,17 @@
  '(solaire-mode-line-inactive-face ((t (:background "#0B2B2D"))))
  '(solaire-org-hide-face ((t (:background "#0B2B2D"))))
 
- '(region ((t (:background "#82b626" :foreground "black"))))  ;; 手动选中高亮颜色
+ '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色82b626
  '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+ '(iedit-occurrence ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
  )
 
 
 ;;调整缩进、格式： 系统默认也是keymap到 C-M-\, 不过只是对选中区域有效，这里让当前激活的buffer也可以。
-(defun indent-buffer()
+(defun dj@indent-buffer()
   (interactive)
   (indent-region (point-min) (point-max)))
-(defun indent-region-or-buffer()
+(defun dj@indent-region-or-buffer()
   (interactive)
   (save-excursion
     (if (region-active-p)
@@ -40,9 +41,9 @@
           (indent-region (region-beginning) (region-end))
           (message "Indent selected region."))
       (progn
-        (indent-buffer)
+        (dj@indent-buffer)
         (message "Indent buffer.")))))
-(global-set-key (kbd "C-M-\\") 'indent-region-or-buffer)
+(global-set-key (kbd "C-M-\\") 'dj@indent-region-or-buffer)
 
 
 ;;光标在括号内时就高亮包含内容的两个括号
