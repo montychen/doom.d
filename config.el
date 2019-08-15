@@ -7,7 +7,6 @@
 (setq doom-theme 'monokai)
 (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体 大小 15
 (setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
-
 (setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
 
 ;; 把背景色改成 jonathan blow 使用的绿色背景: #0B2B2D
@@ -23,7 +22,7 @@
  '(solaire-mode-line-inactive-face ((t (:background "#0B2B2D"))))
  '(solaire-org-hide-face ((t (:background "#0B2B2D"))))
 
- '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色82b626
+ '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
  '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
  '(iedit-occurrence ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
  )
@@ -72,4 +71,8 @@
 
 
 
-(global-set-key (kbd "C-k") 'kill-line)
+(map!
+ :nvi "C-k" #'kill-line                 ; 在正常、可视、插入模式下, C-k 删除当前行光标后的内容。
+ :nvi "C-e" #'doom/forward-to-last-non-comment-or-eol ; 在正常、可视、插入模式下, C-e 去到行尾。
+  :nvi "M-;" #'comment-dwim     ; 在正常、可视、插入模式下, M-; 在行尾添加注释。s-/  是对整行或选中区域进行注释或取消注释。
+ )
