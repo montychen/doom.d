@@ -23,8 +23,8 @@
  '(solaire-mode-line-inactive-face ((t (:background "#0B2B2D"))))
  '(solaire-org-hide-face ((t (:background "#0B2B2D"))))
 
- '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
- '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "white"))))  ;; /搜索匹配高亮颜色
+ '(region ((t (:background "#82b626" :foreground "black"))))  ;; 手动选中高亮颜色
+ '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
  )
 
 
@@ -68,3 +68,7 @@
         regexp-history)
   (call-interactively 'occur))
 (global-set-key (kbd "M-s o") 'occur-dwim)
+
+
+
+(global-set-key (kbd "C-k") 'kill-line)
