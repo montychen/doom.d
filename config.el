@@ -2,6 +2,7 @@
 
 ;; Place your private configuration here
 ;; ======= 显示 display  =========================================================
+;;
 ;; 使用 monokai 主题。 要在packages.el中安装  monokai-theme
 (require 'monokai-theme)
 (setq doom-theme 'monokai)
@@ -39,6 +40,8 @@
 
 
 ;; ======= 编辑   =========================================================
+;;
+;; evil-multiedit 方式: 使用 v 选中文本后，键入 R 可以进入多光标编辑模式. 这时使用 C-n C-p 可以在匹配文本中轮换，按 RET 反选当前匹配项.
 ;;
 ;;调整缩进、格式： 系统默认也是keymap到 C-M-\, 不过只是对选中区域有效，这里让当前激活的buffer也可以。
 (defun dj@indent-buffer()
