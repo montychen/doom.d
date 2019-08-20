@@ -7,3 +7,5 @@
 ;; (package! builtin-package :disable t)
 
  (package! monokai-theme :recipe (:fetcher github :repo "oneKelvinSmith/monokai-emacs"))
+
+(package! pangu-spacing :disable t)     ;在org，doom默认配置了在中英文间插入空格。我不想插入空格，禁用pangu-spacing包。
