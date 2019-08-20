@@ -39,6 +39,7 @@
  )
 
 
+
 ;; ======= 编辑   =========================================================
 ;;
 ;; evil-multiedit 方式: 使用 v 选中文本后，键入 R 可以进入多光标编辑模式. 这时使用 C-n C-p 可以在匹配文本中轮换，按 RET 反选当前匹配项.
@@ -67,7 +68,6 @@
              (ignore-errors (backward-up-list))
              ad-do-it)))
   )
-
 
 
 
@@ -129,10 +129,12 @@
  :nvi "C-k" #'kill-line                 ; 在正常、可视、插入模式下, C-k 删除当前行光标后的内容。
  :nvi "C-e" #'doom/forward-to-last-non-comment-or-eol ; 在正常、可视、插入模式下, C-e 去到行尾。
  :nvi "M-;" #'comment-dwim     ; 在正常、可视、插入模式下, M-; 在行尾添加注释。s-/  是对整行或选中区域进行注释或取消注释。
+ :nvi "s-/" #'comment-line     ; S代表Shift键盘；s代表Command键，默认s-/绑定到evil-commentary-line， 感觉没comment-line好用
 
  )
 
 (map! :leader
       (:prefix ("t" . "toggle")         ; SPC t w  自动折行
         :desc "自动折行"       "t" #'toggle-truncate-lines
+        :desc "org显示内嵌的图片"       "m" #'iimage-mode
         ))
