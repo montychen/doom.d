@@ -21,7 +21,11 @@ git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d # 强烈�
 #+end_src
 
 3、 ~/.emacs.d/bin/doom quickstart
-
+它会自动生成 ~/.doom.d 目录，我们自己的配置都放在这，主要有3个文件
+- config.el
+- init.el
+- packages.el
+  
 4、 编辑 ~/.bash_profile 文件，把 ~/.emacs.d/bin 加入PATH路径
 #+begin_src bash
 vi ~/.bash_profile
@@ -34,3 +38,5 @@ export PATH=$PATH:~/.emacs.d/bin
 修改配置后要运行 doom  refresh
 
 遇到问题可以运行 doom-doctor
+
+* 大功告成，现在就可以正常启动  emacs 程序来享用Doom Emacs。它会自动使用~/.emacs.d 和 ~/.doom.d 下的配置。
