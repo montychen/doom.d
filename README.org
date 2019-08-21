@@ -30,6 +30,7 @@ export PATH=$PATH:~/.emacs.d/bin
 #+end_src
 
 5、 更新配置、查找问题
+
 修改配置后要运行 doom  refresh
 
 遇到问题可以运行 doom-doctor
