@@ -135,6 +135,6 @@
 
 (map! :leader
       (:prefix ("t" . "toggle")         ; SPC t w  自动折行
-        :desc "自动折行"       "t" #'toggle-truncate-lines
+        :desc "自动折行"               "t" #'toggle-truncate-lines
         :desc "org显示内嵌的图片"       "m" #'iimage-mode
         ))

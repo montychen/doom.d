@@ -1,3 +1,10 @@
+* 安装emacs， mac下推荐用brew安装 [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]]
+#+begin_src bash
+brew tap d12frosted/emacs-plus  # brew 有个默认的仓库，brew tap 你可以看成是第三方的仓库；tap仓库源默认是Github，但也不限制于这一个地方
+brew install emacs-plus
+ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
+#+end_src
+
 * 安装 Doom Emacs Develop 分支
 
 1、 git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d
