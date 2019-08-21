@@ -20,7 +20,8 @@ git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d # 强烈�
   ("org"          . "http://mirrors.cloud.tencent.com/elpa/org/")))
 #+end_src
 
-3、 ~/.emacs.d/bin/doom quickstart
+3、 运行  ~/.emacs.d/bin/doom quickstart
+
 它会自动生成 ~/.doom.d 目录，我们自己的配置都放在这，主要有3个文件
 - config.el
 - init.el
