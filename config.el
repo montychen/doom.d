@@ -136,5 +136,5 @@
 (map! :leader
       (:prefix ("t" . "toggle")         ; SPC t w  自动折行
         :desc "自动折行"               "t" #'toggle-truncate-lines
-        :desc "org显示内嵌的图片"       "m" #'iimage-mode
+        ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
         ))
