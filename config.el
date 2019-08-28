@@ -77,7 +77,7 @@
 (setq c-default-style "linux")
 
 
-(remove-hook 'org-mode-hook #'auto-fill-mode)  ; 在org一行太长， 自动折行的时候不生成真正的新行。
+(remove-hook 'org-mode-hook #'auto-fill-mode)  ; 在org，中英混排出现空格时，禁止自动折行生成真正的新行。
 
 
 
