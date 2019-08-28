@@ -70,14 +70,21 @@
   )
 
 
-;; c_c++ 缩进 4 个空格
+;; 设置默认缩进 4 个空格， tab也是4个空格
 (setq-default c-basic-offset 4
               tab-width 4
               indent-tabs-mode t)
 (setq c-default-style "linux")
+(add-hook 'c-mode-common-hook   ; 强制c/c++ 使用 4个空格缩进, 如果只是c++，可以用c++-mode-hook
+          '(lambda()
+             (setq c-basic-offset 4)
+						 (c-set-offset 'substatement-open 0)
+						 ))
 
 
-(remove-hook 'org-mode-hook #'auto-fill-mode)  ; 在org，中英混排出现空格时，禁止自动折行生成真正的新行。
+
+;; 在org，中英混排出现空格时，禁止自动折行生成真正的新行。
+(remove-hook 'org-mode-hook #'auto-fill-mode)
 
 
 
