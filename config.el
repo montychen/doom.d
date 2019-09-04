@@ -38,6 +38,14 @@
  '(swiper-match-face-4 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
  )
 
+(require 'golden-ratio)            ; 自动黄金分割窗口大小。
+(golden-ratio-mode 1)
+;; (setq golden-ratio-auto-scale t)        ; 自动黄金分割窗口大小。
+;; (setq golden-ratio-adjust-factor .8
+;; golden-ratio-wide-adjust-factor .8)
+
+(require 'centered-cursor-mode)         ; 默认当前行居中
+(global-centered-cursor-mode +1)
 
 
 ;; ======= 编辑   =========================================================
@@ -73,13 +81,14 @@
 ;; 设置默认缩进 4 个空格， tab也是4个空格
 (setq-default c-basic-offset 4
               tab-width 4
-              indent-tabs-mode t)
+              indent-tabs-mode nil      ; t 使用 TAB 作格式化字符  nil 使用空格代替tab作格式化字符
+              tab-always-indent t )
 (setq c-default-style "linux")
 (add-hook 'c-mode-common-hook   ; 强制c/c++ 使用 4个空格缩进, 如果只是c++，可以用c++-mode-hook
           '(lambda()
              (setq c-basic-offset 4)
-						 (c-set-offset 'substatement-open 0)
-						 ))
+             (c-set-offset 'substatement-open 0)
+             ))
 
 
 
@@ -151,7 +160,9 @@
  )
 
 (map! :leader
-      (:prefix ("t" . "toggle")         ; SPC t w  自动折行
-        :desc "自动折行"         "v" #'visual-line-mode	; 自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
+      (:prefix ("t" . "toggle")                               ;  SPC t 切换 toggle
+        :desc "当前行居中"                  "-" #'centered-cursor-mode ; 切换当前行居中
+        :desc "自动调整当前窗口大小"         "g" #'golden-ratio-mode; 切换自动调整当前窗口大小
+        :desc "自动折行"                   "v" #'visual-line-mode	; 自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
         ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
         ))
