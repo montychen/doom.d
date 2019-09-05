@@ -5,10 +5,13 @@
 ;;
 ;; 使用 monokai 主题。 要在packages.el中安装  monokai-theme
 (require 'monokai-theme)
-(setq doom-theme 'monokai)
+(setq doom-theme 'monokai
+      monokai-highlight-line "black"    ; 当前行高亮背景色
+      )
 (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体 大小 15
 (setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
 (setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
+
 
 ;; 把背景色改成 jonathan blow 使用的绿色背景: #0B2B2D
 ;; 可通过 M-x list-faces-display 来查看和显示有关的配置信息。
