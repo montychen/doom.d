@@ -3,11 +3,11 @@
 ;; Place your private configuration here
 ;; ======= 显示 display  =========================================================
 ;;
-;; 使用 monokai 主题。 要在packages.el中安装  monokai-theme
-(require 'monokai-theme)
-(setq doom-theme 'monokai
-      monokai-highlight-line "black"    ; 当前行高亮背景色
-      )
+(use-package monokai-theme              ;; 使用 monokai 主题。 要在packages.el中安装  monokai-theme
+  :config
+  (setq doom-theme 'monokai
+        monokai-highlight-line "black"    ; 当前行高亮背景色
+        ))
 (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体 大小 15
 (setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
 (setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
