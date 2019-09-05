@@ -38,16 +38,16 @@
  '(swiper-match-face-4 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
  )
 
-(require 'golden-ratio)            ; 自动黄金分割窗口大小。
-(golden-ratio-mode 1)
-;; (setq golden-ratio-auto-scale t)        ; 自动黄金分割窗口大小。
-;; (setq golden-ratio-adjust-factor .8
-;; golden-ratio-wide-adjust-factor .8)
 
-(require 'centered-cursor-mode)         ; 默认当前行居中
-(global-centered-cursor-mode +1)
+(use-package golden-ratio   ; 自动黄金分割窗口大小。
+  :config
+  (golden-ratio-mode 1)
+  )
 
-
+(use-package centered-cursor-mode       ; 设置默认当前行居中
+  :config
+  (global-centered-cursor-mode)
+  )
 ;; ======= 编辑   =========================================================
 ;;
 ;; evil-multiedit 方式: 使用 v 选中文本后，键入 R 可以进入多光标编辑模式. 这时使用 C-n C-p 可以在匹配文本中轮换，按 RET 反选当前匹配项.
@@ -100,6 +100,8 @@
 ;; ======= 搜索匹配    =========================================================
 ;;
 ;; *：evil normal模式  *  自动匹配光标下的单词，高亮显示， 可用n匹配下项。
+;; zt zz zb： evil nomal 模式下，把当前行移动到屏幕顶部、总部、底部。
+;; H  L:evil nomal 模式下，把光标移动到屏幕顶部， 底部。 gg是移动到到第一行， G是移动到最后一行。
 ;; / 绑定到evil-ex-search-forward：  用于需要手动输入的时候。
 ;; SPC / b 绑定到 counsel-grep-or-swiper ： 用于手动输入， 下面会有所有匹配结果的汇总。
 ;; C-s 默认绑定到 isearch-forward: 不好用， swiper-isearch or swiper-isearch-thing-at-point 感觉没counsel-grep-or-swiper好用。
@@ -162,7 +164,7 @@
 (map! :leader
       (:prefix ("t" . "toggle")                               ;  SPC t 切换 toggle
         :desc "当前行居中"                  "-" #'centered-cursor-mode ; 切换当前行居中
-        :desc "自动调整当前窗口大小"         "g" #'golden-ratio-mode; 切换自动调整当前窗口大小
+        :desc "自动调整窗口大小"             "w" #'golden-ratio-mode; 切换自动调整当前窗口大小
         :desc "自动折行"                   "v" #'visual-line-mode	; 自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
         ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
         ))
