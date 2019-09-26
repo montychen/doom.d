@@ -1,4 +1,4 @@
-* 安装emacs， mac下推荐用brew安装 [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]]
+* 安装 emacs， mac 下推荐用 brew 安装 [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]]
 #+begin_src bash
 brew tap d12frosted/emacs-plus  # brew 有个默认的仓库，brew tap 你可以看成是第三方的仓库；tap仓库源默认是Github，但也不限制于这一个地方
 brew install emacs-plus --without-spacemacs-icon # 不用spacemacs的icon， 用回emacs原来的
@@ -13,21 +13,25 @@ mv ~/.emacs.d  ~/.emacs.d.bak   # 如果之前有安装其它版本的 emacs， 
 git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d # 强烈建议安装develop分支， master分支太久不更新。
 #+end_src
 
-2、 编辑 ~/.emacs.d/core/core-packages.el 把源改成国内的源。下面用的是腾讯的源
-#+begin_src elisp
-`(("gnu"          . "http://mirrors.cloud.tencent.com/elpa/gnu/")
-  ("melpa"        . "http://mirrors.cloud.tencent.com/elpa/melpa/")
-  ("org"          . "http://mirrors.cloud.tencent.com/elpa/org/")))
-#+end_src
+# 2、 在 doom 改用 *straight* 代替 *package* 后，下面这个就不能用了。
 
-3、 运行  ~/.emacs.d/bin/doom quickstart
+# 编辑 ~/.emacs.d/core/core-packages.el 把源改成国内的源。下面用的是腾讯的源
+# #+begin_src elisp
+# `(("gnu"          . "http://mirrors.cloud.tencent.com/elpa/gnu/")
+#   ("melpa"        . "http://mirrors.cloud.tencent.com/elpa/melpa/")
+#   ("org"          . "http://mirrors.cloud.tencent.com/elpa/org/")))
+# #+end_src
 
-它会自动生成 ~/.doom.d 目录，我们自己的配置都放在这，主要有3个文件
+2、 运行  ~/.emacs.d/bin/doom install
+
+在终端下需要设置 vpn 代理翻墙才能安装成功， 终端下翻墙可参考  [[https://zhuanlan.zhihu.com/p/47849525][Max OSX 终端走shadowsocks代理]]
+
+它会自动生成 ~/.doom.d 目录，我们自己的配置都放在这，主要有 3 个文件
 - config.el
 - init.el
 - packages.el
   
-4、 编辑 ~/.bash_profile 文件，把 ~/.emacs.d/bin 加入PATH路径
+3、 编辑 ~/.bash_profile 文件，把 ~/.emacs.d/bin 加入 PATH 路径
 #+begin_src bash
 vi ~/.bash_profile
 ## doom emacs
@@ -36,8 +40,10 @@ export PATH=$PATH:~/.emacs.d/bin
 
 5、 更新配置、查找问题
 
-修改配置后要运行 doom  refresh
+获取 doom 支持的命令 dooh help
 
-遇到问题可以运行 doom-doctor
+修改配置后要运行 doom refresh
 
-* 大功告成，现在就可以正常启动  emacs 程序来享用Doom Emacs。它会自动使用~/.emacs.d 和 ~/.doom.d 下的配置。
+遇到问题可以运行 doom doctor
+
+* 大功告成，现在就可以正常启动  emacs 程序来享用 Doom Emacs。它会自动使用~/.emacs.d 和 ~/.doom.d 下的配置。
