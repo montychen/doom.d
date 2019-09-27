@@ -159,14 +159,13 @@
  :nvi "C-k" #'kill-line                 ; 在正常、可视、插入模式下, C-k 删除当前行光标后的内容。
  :nvi "C-e" #'doom/forward-to-last-non-comment-or-eol ; 在正常、可视、插入模式下, C-e 去到行尾。
   :nvi "M-;" #'comment-dwim     ; 在正常、可视、插入模式下, M-; 在行尾添加注释。s-/  是对整行或选中区域进行注释或取消注释。
- :nvi "s-/" #'comment-line     ; S代表Shift键盘；s代表Command键，默认s-/绑定到evil-commentary-line， 感觉没comment-line好用
+ :nvi "s-/" #'comment-line)     ; S代表Shift键盘；s代表Command键，默认s-/绑定到evil-commentary-line， 感觉没comment-line好用
 
- )
+
 
 (map! :leader
       (:prefix ("t" . "toggle")                               ;  SPC t 切换 toggle
-        :desc "当前行居中"                  "-" #'centered-cursor-mode ; 切换当前行居中
+        :desc "当前行居中"                  "-" #'centered-cursor-mode)) ; 切换当前行居中
 ;;         :desc "自动调整窗口大小"             "w" #'golden-ratio-mode; 切换自动调整当前窗口大小
-;;         :desc "自动折行"                   "v" #'visual-line-mode	; 系统提供了word-wrap模块，启用后，可通过 SPC t w 切换。自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
-;;         ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
-        ))
+;;   ;;; deprecated    :desc "自动折行"                   "v" #'visual-line-mode	; 系统提供了word-wrap模块，启用后，可通过 SPC t w 切换。自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
+;;   ;;; deprecated      ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
