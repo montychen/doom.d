@@ -95,7 +95,7 @@
 
 
 ;; ;; 在org，中英混排出现空格时，禁止自动折行生成真正的新行。
-;; (remove-hook 'org-mode-hook #'auto-fill-mode)
+(remove-hook 'org-mode-hook #'auto-fill-mode)
 
 
 
