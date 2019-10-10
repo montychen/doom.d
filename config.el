@@ -8,7 +8,24 @@
 ;;   (setq doom-theme 'monokai
 ;;         monokai-highlight-line "black"    ; 当前行高亮背景色
 ;;         ))
+
 (setq doom-font (font-spec :family "Source Code Pro" :size 16))  ;; 使用Source Code Pro 字体 大小 15
+
+;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/
+(with-eval-after-load 'org
+  (defun org-buffer-face-mode-variable ()
+    (interactive)
+    (make-face 'my-org-face)  ;; 创建一个自己的face
+    (set-face-attribute 'my-org-face nil  ;; 配置这个face
+                        :font "Source Code Pro 17"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
+                        ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
+                        ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
+                        )
+    (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
+    (buffer-face-mode))
+  (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
+
+
 (setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
 (setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
 
@@ -26,28 +43,29 @@
  ;;  '(solaire-mode-line-inactive-face ((t (:background "#0B2B2D"))))
  ;;  '(solaire-org-hide-face ((t (:background "#0B2B2D"))))
 
- ;; 设置org标题1-8级的字体大小和颜色，颜色摘抄自monokai。
- '(org-level-1 ((t (:inherit outline-1 :height 1.2 :foreground "#FD971F")))) ; monokai-orange "#FD971F"
- '(org-level-2 ((t (:inherit outline-2 :height 1.2 :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-3 ((t (:inherit outline-3 :height 1.2 :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
- '(org-level-4 ((t (:inherit outline-4 :height 1.2 :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
- '(org-level-5 ((t (:inherit outline-5 :height 1.2 :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
- '(org-level-6 ((t (:inherit outline-6 :height 1.2 :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-7 ((t (:inherit outline-7 :height 1.2 :foreground "#F92672")))) ; monokai-red "#F92672"
- '(org-level-8 ((t (:inherit outline-8 :height 1.2 :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ ;; 设置org标题1-8级的字体大小和颜色，颜色摘抄自monokai。;希望org-mode标题的字体大小和正文一致，设成1.0， 如果希望标题字体大一点可以设成1.2
+ '(org-level-1 ((t (:inherit default :height 1.1  :foreground "#FD971F")))) ; monokai-orange "#FD971F"
+ '(org-level-2 ((t (:inherit default :height 1.1  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ '(org-level-3 ((t (:inherit default :height 1.1  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ '(org-level-4 ((t (:inherit default :height 1.1  :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
+ '(org-level-5 ((t (:inherit default :height 1.1  :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
+ '(org-level-6 ((t (:inherit default :height 1.1  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ '(org-level-7 ((t (:inherit default :height 1.1  :foreground "#F92672")))) ; monokai-red "#F92672"
+ '(org-level-8 ((t (:inherit default :height 1.1  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+
 
  '(region ((t (:background "#FF9933" :foreground "black")))))  ;; 手动选中高亮颜色
- ;; '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
- ;; '(iedit-occurrence ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(iedit-occurrence ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
 
- ;; '(swiper-background-match-face-1 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
- ;; '(swiper-background-match-face-2 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
- ;; '(swiper-background-match-face-3 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
- ;; '(swiper-background-match-face-4 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
- ;; '(swiper-match-face-1 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
- ;; '(swiper-match-face-2 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
- ;; '(swiper-match-face-3 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
- ;; '(swiper-match-face-4 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(swiper-background-match-face-1 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(swiper-background-match-face-2 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(swiper-background-match-face-3 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(swiper-background-match-face-4 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(swiper-match-face-1 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(swiper-match-face-2 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(swiper-match-face-3 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
+;; '(swiper-match-face-4 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
 
 
 
