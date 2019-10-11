@@ -191,7 +191,8 @@
 
 (map! :leader
       (:prefix ("t" . "toggle")                               ;  SPC t 切换 toggle
-        ;; :desc "当前行居中"                  "-" #'centered-cursor-mode)) ; 切换当前行居中
-;;         :desc "自动调整窗口大小"             "w" #'golden-ratio-mode; 切换自动调整当前窗口大小
-;;   ;;; deprecated    :desc "自动折行"                   "v" #'visual-line-mode    ; 系统提供了word-wrap模块，启用后，可通过 SPC t w 切换。自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
-;;   ;;; deprecated      ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
+        ;; :desc "当前行居中"                  "-" #'centered-cursor-mode) ; 切换当前行居中
+        ;;         :desc "自动调整窗口大小"             "w" #'golden-ratio-mode; 切换自动调整当前窗口大小
+        ;;   ;;; deprecated    :desc "自动折行"                   "v" #'visual-line-mode    ; 系统提供了word-wrap模块，启用后，可通过 SPC t w 切换。自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
+        ;;   ;;; deprecated      ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
+))
