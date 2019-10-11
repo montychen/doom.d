@@ -1,9 +1,9 @@
 ;; -*- no-byte-compile: t; -*-
-;;; ~/.doom.d/packages.el
+;;; .doom.d/packages.el
 
 ;;; Examples:
 ;; (package! some-package)
-;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
+;; (package! another-package :recipe (:host github :repo "username/repo"))
 ;; (package! builtin-package :disable t)
 
 (package! monokai-theme :recipe (:host github :repo "oneKelvinSmith/monokai-emacs"))

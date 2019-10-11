@@ -44,17 +44,16 @@
  ;;  '(solaire-org-hide-face ((t (:background "#0B2B2D"))))
 
  ;; 设置org标题1-8级的字体大小和颜色，颜色摘抄自monokai。;希望org-mode标题的字体大小和正文一致，设成1.0， 如果希望标题字体大一点可以设成1.2
- '(org-level-1 ((t (:inherit default :height 1.1  :foreground "#FD971F")))) ; monokai-orange "#FD971F"
- '(org-level-2 ((t (:inherit default :height 1.1  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-3 ((t (:inherit default :height 1.1  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
- '(org-level-4 ((t (:inherit default :height 1.1  :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
- '(org-level-5 ((t (:inherit default :height 1.1  :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
- '(org-level-6 ((t (:inherit default :height 1.1  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-7 ((t (:inherit default :height 1.1  :foreground "#F92672")))) ; monokai-red "#F92672"
- '(org-level-8 ((t (:inherit default :height 1.1  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ '(org-level-1 ((t (:inherit outline-1 :height 1.1  :foreground "#FD971F")))) ; monokai-orange "#FD971F"
+ '(org-level-2 ((t (:inherit outline-2 :height 1.1  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ '(org-level-3 ((t (:inherit outline-3 :height 1.1  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ '(org-level-4 ((t (:inherit outline-4 :height 1.1  :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
+ '(org-level-5 ((t (:inherit outline-5 :height 1.1  :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
+ '(org-level-6 ((t (:inherit outline-6 :height 1.1  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ '(org-level-7 ((t (:inherit outline-7 :height 1.1  :foreground "#F92672")))) ; monokai-red "#F92672"
+ '(org-level-8 ((t (:inherit outline-8 :height 1.1  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
 
-
- '(region ((t (:background "#FF9933" :foreground "black")))))  ;; 手动选中高亮颜色
+ '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
 ;; '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
 ;; '(iedit-occurrence ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
 
@@ -66,7 +65,7 @@
 ;; '(swiper-match-face-2 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
 ;; '(swiper-match-face-3 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
 ;; '(swiper-match-face-4 ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
-
+) ;; end custom-set-faces
 
 
 ;; (use-package golden-ratio   ; 自动黄金分割窗口大小。
@@ -74,10 +73,10 @@
 ;;   (golden-ratio-mode 1)
 ;;   )
 
-(use-package centered-cursor-mode       ; 设置默认当前行居中
-  :config
-  (global-centered-cursor-mode)
-  )
+;; (use-package centered-cursor-mode       ; 设置默认当前行居中
+;;   :config
+;;   (global-centered-cursor-mode)
+;;   )
 ;; ;; ======= 编辑   =========================================================
 ;; ;;
 ;; ;; evil-multiedit 方式: 使用 v 选中文本后，键入 R 可以进入多光标编辑模式. 这时使用 C-n C-p 可以在匹配文本中轮换，按 RET 反选当前匹配项.
