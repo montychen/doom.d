@@ -6,26 +6,26 @@
 ;; (use-package monokai-theme              ;; 使用 monokai 主题。 要在packages.el中安装  monokai-theme
 ;;   :config
 ;;   (setq doom-theme 'monokai
-;;         monokai-highlight-line "black"    ; 当前行高亮背景色
+;;         monokai-highlight-line "black"    ; 修改monokai当前行的高亮背景色
 ;;         ))
 
 (setq doom-theme 'doom-molokai)         ; 使用doom自带的monokai主题
 
-(setq doom-font (font-spec :family "Source Code Pro" :size 16))  ;; 使用Source Code Pro 字体 大小 15
+(setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体 大小 15
 
 ;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/
-(with-eval-after-load 'org
-  (defun org-buffer-face-mode-variable ()
-    (interactive)
-    (make-face 'my-org-face)  ;; 创建一个自己的face
-    (set-face-attribute 'my-org-face nil  ;; 配置这个face
-                        :font "Source Code Pro 17"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
-                        ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
-                        ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
-                        )
-    (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
-    (buffer-face-mode))
-  (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
+;; (with-eval-after-load 'org
+;;   (defun org-buffer-face-mode-variable ()
+;;     (interactive)
+;;     (make-face 'my-org-face)  ;; 创建一个自己的face
+;;     (set-face-attribute 'my-org-face nil  ;; 配置这个face
+;;                         :font "Source Code Pro 17"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
+;;                         ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
+;;                         ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
+;;                         )
+;;     (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
+;;     (buffer-face-mode))
+;;   (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
 
 
 (setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
@@ -34,6 +34,7 @@
 
 ;; ;; 可通过 M-x list-faces-display 来查看和显示有关的配置信息。
 (custom-set-faces
+ '(solaire-hl-line-face ((t (:inherit hl-line :background "#0D343E"))))  ;; 修改doom-theme当前行的高亮背景色
  ;; '(default ((t (:background "#0B2B2D"))))   ;; 把背景色改成 jonathan blow 使用的绿色背景: #0B2B2D
 
  ;;  '(solaire-default-face ((t (:background "#0B2B2D"))))
@@ -46,14 +47,14 @@
  ;;  '(solaire-org-hide-face ((t (:background "#0B2B2D"))))
 
  ;; 设置org标题1-8级的字体大小和颜色，颜色摘抄自monokai。;希望org-mode标题的字体大小和正文一致，设成1.0， 如果希望标题字体大一点可以设成1.2
- '(org-level-1 ((t (:inherit outline-1 :height 1.2  :foreground "#FD971F")))) ; monokai-orange "#FD971F"
- '(org-level-2 ((t (:inherit outline-2 :height 1.2  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-3 ((t (:inherit outline-3 :height 1.2  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
- '(org-level-4 ((t (:inherit outline-4 :height 1.2  :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
- '(org-level-5 ((t (:inherit outline-5 :height 1.2  :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
- '(org-level-6 ((t (:inherit outline-6 :height 1.2  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-7 ((t (:inherit outline-7 :height 1.2  :foreground "#F92672")))) ; monokai-red "#F92672"
- '(org-level-8 ((t (:inherit outline-8 :height 1.2  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ '(org-level-1 ((t (:inherit outline-1 :height 1.25  :foreground "#FD971F")))) ; monokai-orange "#FD971F"
+ '(org-level-2 ((t (:inherit outline-2 :height 1.25  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ '(org-level-3 ((t (:inherit outline-3 :height 1.25  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ '(org-level-4 ((t (:inherit outline-4 :height 1.25  :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
+ '(org-level-5 ((t (:inherit outline-5 :height 1.25  :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
+ '(org-level-6 ((t (:inherit outline-6 :height 1.25  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ '(org-level-7 ((t (:inherit outline-7 :height 1.25  :foreground "#F92672")))) ; monokai-red "#F92672"
+ '(org-level-8 ((t (:inherit outline-8 :height 1.25  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
 
  '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
  ;; '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
@@ -198,4 +199,4 @@
         ;;         :desc "自动调整窗口大小"             "w" #'golden-ratio-mode; 切换自动调整当前窗口大小
         ;;   ;;; deprecated    :desc "自动折行"                   "v" #'visual-line-mode    ; 系统提供了word-wrap模块，启用后，可通过 SPC t w 切换。自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
         ;;   ;;; deprecated      ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
-))
+        ))
