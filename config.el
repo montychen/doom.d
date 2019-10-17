@@ -8,7 +8,6 @@
 ;;   (setq doom-theme 'monokai
 ;;         monokai-highlight-line "black"    ; 修改monokai当前行的高亮背景色
 ;;         ))
-
 (setq doom-theme 'doom-molokai)         ; 使用doom自带的monokai主题
 
 (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体 大小 15
@@ -125,9 +124,8 @@
 
 
 ;; ;; 在org，中英混排出现空格时，禁止自动折行生成真正的新行。
-(remove-hook 'org-mode-hook #'auto-fill-mode)
-
-
+(remove-hook 'org-mode-hook #'auto-fill-mode) ; 在新的doom 20191017版本中，这个好像不行了，只好用下面这个把 fill-column设一个大值
+(setq-default fill-column 10000)         ; org-mode模式，在超过fill-column设定值的列的位置，插入空格时，会导致硬换行|硬回车, 挺烦人的，所以这里故意把它设打一点。
 
 ;; ;; ======= 搜索匹配    =========================================================
 ;; ;;
@@ -196,7 +194,7 @@
 (map! :leader
       (:prefix ("t" . "toggle")                               ;  SPC t 切换 toggle
         ;; :desc "当前行居中"                  "-" #'centered-cursor-mode) ; 切换当前行居中
-        ;;         :desc "自动调整窗口大小"             "w" #'golden-ratio-mode; 切换自动调整当前窗口大小
-        ;;   ;;; deprecated    :desc "自动折行"                   "v" #'visual-line-mode    ; 系统提供了word-wrap模块，启用后，可通过 SPC t w 切换。自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
+        ;;         :desc "自动调整窗口大小"     "w" #'golden-ratio-mode; 切换自动调整当前窗口大小
+        ;; :desc "自动折行"         "v" #'visual-line-mode    ; 系统提供了word-wrap模块，启用后，可通过 SPC t w 切换。自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
         ;;   ;;; deprecated      ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
         ))
