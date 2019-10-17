@@ -125,7 +125,7 @@
 
 ;; ;; 在org，中英混排出现空格时，禁止自动折行生成真正的新行。
 (remove-hook 'org-mode-hook #'auto-fill-mode) ; 在新的doom 20191017版本中，这个好像不行了，只好用下面这个把 fill-column设一个大值
-(setq-default fill-column 10000)         ; org-mode模式，在超过fill-column设定值的列的位置，插入空格时，会导致硬换行|硬回车, 挺烦人的，所以这里故意把它设打一点。
+(setq-default fill-column 10000)         ; org-mode模式，在超过fill-column值的列位置，插入空格，会导致硬换行|硬回车, 烦人，所以这里故意把它设大
 
 ;; ;; ======= 搜索匹配    =========================================================
 ;; ;;
