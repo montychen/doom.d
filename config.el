@@ -33,7 +33,8 @@
 
 ;; ;; 可通过 M-x list-faces-display 来查看和显示有关的配置信息。
 (custom-set-faces
- '(solaire-hl-line-face ((t (:inherit hl-line :background "#0D343E"))))  ;; 修改doom-theme当前行的高亮背景色
+ '(solaire-hl-line-face ((t (:inherit hl-line :background "#0D343E"))))  ;; 修改doom-molokai当前行的高亮背景色
+ '(font-lock-comment-face ((t (:foreground "#75715E"))))                 ;; 修改doom-molokai 注释行字体的前景。 默认的感觉淡了点。
  ;; '(default ((t (:background "#0B2B2D"))))   ;; 把背景色改成 jonathan blow 使用的绿色背景: #0B2B2D
 
  ;; z a 折叠开关  z m 全部折叠  z r 展开所有折叠  z o 展开当前所在的折叠
