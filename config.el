@@ -10,7 +10,8 @@
 ;;         ))
 (setq doom-theme 'doom-molokai)         ; 使用doom自带的monokai主题
 
-(setq doom-font (font-spec :family "Source Code Pro" :size 14))  ;; 使用Source Code Pro 字体 大小 15
+(setq doom-font (font-spec :family "Fira Code" :size 14))  ;; 使用Fira Code字体 https://github.com/tonsky/FiraCode
+;; (setq doom-font (font-spec :family "Source Code Pro" :size 14))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
 
 ;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/
 ;; (with-eval-after-load 'org
@@ -18,7 +19,7 @@
 ;;     (interactive)
 ;;     (make-face 'my-org-face)  ;; 创建一个自己的face
 ;;     (set-face-attribute 'my-org-face nil  ;; 配置这个face
-;;                         :font "Source Code Pro 17"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
+;;                         :font "Source Code Pro 15"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
 ;;                         ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
 ;;                         ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
 ;;                         )
