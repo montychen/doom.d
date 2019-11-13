@@ -10,22 +10,22 @@
 ;;         ))
 (setq doom-theme 'doom-molokai)         ; 使用doom自带的monokai主题
 
-(setq doom-font (font-spec :family "Fira Code" :size 14))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
+(setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
 ;; (setq doom-font (font-spec :family "Source Code Pro" :size 14))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
 
 ;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/
-;; (with-eval-after-load 'org
-;;   (defun org-buffer-face-mode-variable ()
-;;     (interactive)
-;;     (make-face 'my-org-face)  ;; 创建一个自己的face
-;;     (set-face-attribute 'my-org-face nil  ;; 配置这个face
-;;                         :font "Source Code Pro 15"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
-;;                         ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
-;;                         ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
-;;                         )
-;;     (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
-;;     (buffer-face-mode))
-;;   (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
+(with-eval-after-load 'org
+  (defun org-buffer-face-mode-variable ()
+    (interactive)
+    (make-face 'my-org-face)  ;; 创建一个自己的face
+    (set-face-attribute 'my-org-face nil  ;; 配置这个face
+                        :font "Source Code Pro 16"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
+                        ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
+                        ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
+                        )
+    (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
+    (buffer-face-mode))
+  (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
 
 (setq display-line-numbers-type nil)    ; doom默认显示行号， 这里设成不显示行号。
 
@@ -36,7 +36,7 @@
 ;; ;; 可通过 M-x list-faces-display 来查看和显示有关的配置信息。
 (custom-set-faces
  '(solaire-hl-line-face ((t (:inherit hl-line :background "#0D343E"))))  ;; 修改doom-molokai当前行的高亮背景色
- '(font-lock-comment-face ((t (:foreground "#75715E"))))                 ;; 修改doom-molokai 注释行字体的前景。 默认的感觉淡了点。
+ '(font-lock-comment-face ((t (:foreground "#75715E"))))                 ;; 修改doom-molokai 注释行字体的前景色。 默认的感觉淡了点。
  ;; '(default ((t (:background "#0B2B2D"))))   ;; 把背景色改成 jonathan blow 使用的绿色背景: #0B2B2D
 
  ;; z a 折叠开关  z m 全部折叠  z r 展开所有折叠  z o 展开当前所在的折叠
@@ -48,19 +48,19 @@
  ;;  '(solaire-hl-line-face ((t (:background "#0B2B2D"))))
  ;;  '(solaire-line-number-face ((t (:background "#0B2B2D"))))
  ;;  '(solaire-minibuffer-face ((t (:background "#0B2B2D"))))
- ;;  '(solaire-mode-line-face ((t (:background "#0B2B2D"))))
- ;;  '(solaire-mode-line-inactive-face ((t (:background "#0B2B2D"))))
+ ;; '(solaire-mode-line-face ((t (:background "#0B2B2D"))))
+ ;; '(solaire-mode-line-inactive-face ((t (:background "#0B2B2D"))))
  ;;  '(solaire-org-hide-face ((t (:background "#0B2B2D"))))
 
  ;; 设置org标题1-8级的字体大小和颜色，颜色摘抄自monokai。;希望org-mode标题的字体大小和正文一致，设成1.0， 如果希望标题字体大一点可以设成1.2
- '(org-level-1 ((t (:inherit outline-1 :height 1.25  :foreground "#FD971F")))) ; monokai-orange "#FD971F"
- '(org-level-2 ((t (:inherit outline-2 :height 1.25  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-3 ((t (:inherit outline-3 :height 1.25  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
- '(org-level-4 ((t (:inherit outline-4 :height 1.25  :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
- '(org-level-5 ((t (:inherit outline-5 :height 1.25  :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
- '(org-level-6 ((t (:inherit outline-6 :height 1.25  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-7 ((t (:inherit outline-7 :height 1.25  :foreground "#F92672")))) ; monokai-red "#F92672"
- '(org-level-8 ((t (:inherit outline-8 :height 1.25  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ '(org-level-1 ((t (:inherit outline-1 :height 1.2  :foreground "#FD971F")))) ; monokai-orange "#FD971F"
+ '(org-level-2 ((t (:inherit outline-2 :height 1.2  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ '(org-level-3 ((t (:inherit outline-3 :height 1.2  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ '(org-level-4 ((t (:inherit outline-4 :height 1.2  :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
+ '(org-level-5 ((t (:inherit outline-5 :height 1.2  :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
+ '(org-level-6 ((t (:inherit outline-6 :height 1.2  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ '(org-level-7 ((t (:inherit outline-7 :height 1.2  :foreground "#F92672")))) ; monokai-red "#F92672"
+ '(org-level-8 ((t (:inherit outline-8 :height 1.2  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
 
  '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
  ;; '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
