@@ -26,7 +26,7 @@
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
-       indent-guides     ; highlighted indent columns
+       ;; indent-guides     ; highlighted indent columns  开启这个很影响性能
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
@@ -66,7 +66,7 @@
        ;; eshell            ; a consistent, cross-platform shell (WIP)
        ;; shell             ; a terminal REPL for Emacs
        ;; term              ; terminals in Emacs
-       vterm             ; another terminals in Emacs
+       ;; vterm             ; another terminals in Emacs
 
        :tools
        ;;ansible

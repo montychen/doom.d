@@ -1,4 +1,4 @@
-;; ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
+;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; ;; Place your private configuration here
 ;; ;; ======= 显示 display  =========================================================
@@ -11,21 +11,21 @@
 (setq doom-theme 'doom-molokai)         ; 使用doom自带的monokai主题
 
 (setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
-;; (setq doom-font (font-spec :family "Source Code Pro" :size 14))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
+;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
 
 ;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/
-(with-eval-after-load 'org
-  (defun org-buffer-face-mode-variable ()
-    (interactive)
-    (make-face 'my-org-face)  ;; 创建一个自己的face
-    (set-face-attribute 'my-org-face nil  ;; 配置这个face
-                        :font "Source Code Pro 16"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
-                        ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
-                        ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
-                        )
-    (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
-    (buffer-face-mode))
-  (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
+;; (with-eval-after-load 'org
+;;   (defun org-buffer-face-mode-variable ()
+;;     (interactive)
+;;     (make-face 'my-org-face)  ;; 创建一个自己的face
+;;     (set-face-attribute 'my-org-face nil  ;; 配置这个face
+;;                         :font "Source Code Pro 16"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
+;;                         ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
+;;                         ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
+;;                         )
+;;     (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
+;;     (buffer-face-mode))
+;;   (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
 
 (setq display-line-numbers-type nil)    ; doom默认显示行号， 这里设成不显示行号。
 
@@ -132,7 +132,7 @@
 
 ;; ;; 在org，中英混排出现空格时，禁止自动折行生成真正的新行。
 (remove-hook 'org-mode-hook #'auto-fill-mode) ; 在新的doom 20191017版本中，这个好像不行了，只好用下面这个把 fill-column设一个大值
-(setq-default fill-column 10000)         ; org-mode模式，在超过fill-column值的列位置，插入空格，会导致硬换行|硬回车, 烦人，所以这里故意把它设大
+(setq-default fill-column 2000)               ; org-mode模式，在超过fill-column值的列位置，插入空格，会导致硬换行|硬回车, 烦人，所以这里故意把它设大。
 
 ;; ;; ======= 搜索匹配    =========================================================
 ;; ;;
