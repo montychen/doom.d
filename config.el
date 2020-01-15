@@ -35,6 +35,7 @@
 
 ;; ;; 可通过 M-x list-faces-display 来查看和显示有关的配置信息。
 (custom-set-faces
+ ;; '(org-table ((t (:foreground "#6c71c4" :family "Ubuntu Mono")))) ; 解决org-table中英混排对齐, Ubuntu Mono https://design.ubuntu.com/font/ 中文字体宽度是英文的2倍。 上面Fira Code字体大小也要设成14或16大小。不然也对不齐
  '(solaire-hl-line-face ((t (:inherit hl-line :background "#0D343E"))))  ;; 修改doom-molokai当前行的高亮背景色
  '(font-lock-comment-face ((t (:foreground "#75715E"))))                 ;; 修改doom-molokai 注释行字体的前景色。 默认的感觉淡了点。
  ;; '(default ((t (:background "#0B2B2D"))))   ;; 把背景色改成 jonathan blow 使用的绿色背景: #0B2B2D
