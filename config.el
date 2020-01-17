@@ -10,7 +10,8 @@
 ;;         ))
 (setq doom-theme 'doom-molokai)         ; 使用doom自带的monokai主题
 
-(setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
+(setq doom-font (font-spec :family "JetBrains Mono" :size 15))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
+;; (setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
 ;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
 
 ;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/
