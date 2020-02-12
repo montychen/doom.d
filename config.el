@@ -1,3 +1,63 @@
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+
+;; Place your private configuration here! Remember, you do not need to run 'doom
+;; refresh' after modifying this file!
+
+
+;; Some functionality uses this to identify you, e.g. GPG configuration, email
+;; clients, file templates and snippets.
+(setq user-full-name "John Doe"
+      user-mail-address "john@doe.com")
+
+;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
+;; are the three important ones:
+;;
+;; + `doom-font'
+;; + `doom-variable-pitch-font'
+;; + `doom-big-font' -- used for `doom-big-font-mode'
+;;
+;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
+;; font string. You generally only need these two:
+;; (setq doom-font (font-spec :family "monospace" :size 15))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 15))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
+;; (setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
+;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
+
+
+;; There are two ways to load a theme. Both assume the theme is installed and
+;; available. You can either set `doom-theme' or manually load a theme with the
+;; `load-theme' function. These are the defaults.
+(setq doom-theme 'doom-one)
+;; (setq doom-theme 'doom-molokai)         ; 使用doom自带的monokai主题
+
+;; If you intend to use org, it is recommended you change this!
+(setq org-directory "~/org/")
+
+;; If you want to change the style of line numbers, change this to `relative' or
+;; `nil' to disable it:
+(setq display-line-numbers-type t)
+
+
+;; Here are some additional functions/macros that could help you configure Doom:
+;;
+;; - `load!' for loading external *.el files relative to this one
+;; - `use-package' for configuring packages
+;; - `after!' for running code after a package has loaded
+;; - `add-load-path!' for adding directories to the `load-path', where Emacs
+;;   looks when you load packages with `require' or `use-package'.
+;; - `map!' for binding new keys
+;;
+;; To get information about any of these functions/macros, move the cursor over
+;; the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
+;; This will open documentation for it, including demos of how they are used.
+;;
+;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
+;; they are implemented.
+
+;; ================================================================================
+;; ================================================================================
+;; ================================================================================
+
 ;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 ;; ;; Place your private configuration here
@@ -8,11 +68,6 @@
 ;;   (setq doom-theme 'monokai
 ;;         monokai-highlight-line "black"    ; 修改monokai当前行的高亮背景色
 ;;         ))
-(setq doom-theme 'doom-molokai)         ; 使用doom自带的monokai主题
-
-(setq doom-font (font-spec :family "JetBrains Mono" :size 15))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
-;; (setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
-;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
 
 ;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/
 ;; (with-eval-after-load 'org
@@ -28,22 +83,21 @@
 ;;     (buffer-face-mode))
 ;;   (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
 
-(setq display-line-numbers-type nil)    ; doom默认显示行号， 这里设成不显示行号。
-
 (setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
-(setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
+;; (setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
 
 
 ;; ;; 可通过 M-x list-faces-display 来查看和显示有关的配置信息。
 (custom-set-faces
  ;; '(org-table ((t (:foreground "#6c71c4" :family "Ubuntu Mono")))) ; 解决org-table中英混排对齐, Ubuntu Mono https://design.ubuntu.com/font/ 中文字体宽度是英文的2倍。 上面Fira Code字体大小也要设成14或16大小。不然也对不齐
- '(solaire-hl-line-face ((t (:inherit hl-line :background "#0D343E"))))  ;; 修改doom-molokai当前行的高亮背景色
- '(font-lock-comment-face ((t (:foreground "#75715E"))))                 ;; 修改doom-molokai 注释行字体的前景色。 默认的感觉淡了点。
+
+ '(hl-line ((t (:background "#000030" )))) ;; 修改当前行的高亮背景色。 M-x 运行describe-char -> Face: h1-line -> Background: #0D343E 可以看到这个值。通过(customize this face) 修改，被保存在 ~/.emacs.d/.local/custom.el 文件
+ ;; '(font-lock-comment-face ((t (:foreground "#75715E"))))                 ;; 修改doom-molokai 注释行字体的前景色。 默认的感觉淡了点。
  ;; '(default ((t (:background "#0B2B2D"))))   ;; 把背景色改成 jonathan blow 使用的绿色背景: #0B2B2D
 
  ;; z a 折叠开关  z m 全部折叠  z r 展开所有折叠  z o 展开当前所在的折叠
- '(+fold-hideshow-folded-face ((t (:inherit font-lock-comment-face :background "#3A4625" :foreground "red" :weight semi-light)))) ; 设置折叠的背景色
- '(vimish-fold-overlay ((t (:inherit font-lock-comment-face :background "#3A4625" :foreground "red" :weight bold))))  ; 设置折叠的背景色
+ ;; '(+fold-hideshow-folded-face ((t (:inherit font-lock-comment-face :background "#3A4625" :foreground "red" :weight semi-light)))) ; 设置折叠的背景色
+ ;; '(vimish-fold-overlay ((t (:inherit font-lock-comment-face :background "#3A4625" :foreground "red" :weight bold))))  ; 设置折叠的背景色
 
  ;;  '(solaire-default-face ((t (:background "#0B2B2D"))))
  ;;  '(solaire-fringe-face ((t (:background "#0B2B2D"))))
@@ -55,16 +109,25 @@
  ;;  '(solaire-org-hide-face ((t (:background "#0B2B2D"))))
 
  ;; 设置org标题1-8级的字体大小和颜色，颜色摘抄自monokai。;希望org-mode标题的字体大小和正文一致，设成1.0， 如果希望标题字体大一点可以设成1.2
- '(org-level-1 ((t (:inherit outline-1 :height 1.2  :foreground "#FD971F")))) ; monokai-orange "#FD971F"
- '(org-level-2 ((t (:inherit outline-2 :height 1.2  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-3 ((t (:inherit outline-3 :height 1.2  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
- '(org-level-4 ((t (:inherit outline-4 :height 1.2  :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
- '(org-level-5 ((t (:inherit outline-5 :height 1.2  :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
- '(org-level-6 ((t (:inherit outline-6 :height 1.2  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
- '(org-level-7 ((t (:inherit outline-7 :height 1.2  :foreground "#F92672")))) ; monokai-red "#F92672"
- '(org-level-8 ((t (:inherit outline-8 :height 1.2  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ ;; '(org-level-1 ((t (:inherit outline-1 :height 1.2  :foreground "#FD971F")))) ; monokai-orange "#FD971F"
+ ;; '(org-level-2 ((t (:inherit outline-2 :height 1.2  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ ;; '(org-level-3 ((t (:inherit outline-3 :height 1.2  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ ;; '(org-level-4 ((t (:inherit outline-4 :height 1.2  :foreground "#E6DB74")))) ; monokai-yellow "#E6DB74"
+ ;; '(org-level-5 ((t (:inherit outline-5 :height 1.2  :foreground "#A1EFE4")))) ; monokai-cyan "#A1EFE4"
+ ;; '(org-level-6 ((t (:inherit outline-6 :height 1.2  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
+ ;; '(org-level-7 ((t (:inherit outline-7 :height 1.2  :foreground "#F92672")))) ; monokai-red "#F92672"
+ ;; '(org-level-8 ((t (:inherit outline-8 :height 1.2  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
+ ;; 调整大小， 颜色不变。
+ '(org-level-1 ((t (:inherit outline-1 :height 1.2  )))) ; monokai-orange "#FD971F"
+ '(org-level-2 ((t (:inherit outline-2 :height 1.2  )))) ; monokai-green "#A6E22E"
+ '(org-level-3 ((t (:inherit outline-3 :height 1.2  )))) ; monokai-blue "#66D9EF"
+ '(org-level-4 ((t (:inherit outline-4 :height 1.2  )))) ; monokai-yellow "#E6DB74"
+ '(org-level-5 ((t (:inherit outline-5 :height 1.2  )))) ; monokai-cyan "#A1EFE4"
+ '(org-level-6 ((t (:inherit outline-6 :height 1.2  )))) ; monokai-green "#A6E22E"
+ '(org-level-7 ((t (:inherit outline-7 :height 1.2  )))) ; monokai-red "#F92672"
+ '(org-level-8 ((t (:inherit outline-8 :height 1.2  )))) ; monokai-blue "#66D9EF"
 
- '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
+ ;; '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
  ;; '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
  ;; '(iedit-occurrence ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
 
@@ -133,8 +196,8 @@
 
 
 ;; ;; 在org，中英混排出现空格时，禁止自动折行生成真正的新行。
-(remove-hook 'org-mode-hook #'auto-fill-mode) ; 在新的doom 20191017版本中，这个好像不行了，只好用下面这个把 fill-column设一个大值
-(setq-default fill-column 2000)               ; org-mode模式，在超过fill-column值的列位置，插入空格，会导致硬换行|硬回车, 烦人，所以这里故意把它设大。
+;; (remove-hook 'org-mode-hook #'auto-fill-mode) ; 在新的doom 20191017版本中，这个好像不行了，只好用下面这个把 fill-column设一个大值
+;; (setq-default fill-column 2000)               ; org-mode模式，在超过fill-column值的列位置，插入空格，会导致硬换行|硬回车, 烦人，所以这里故意把它设大。
 
 ;; ;; ======= 搜索匹配    =========================================================
 ;; ;;
@@ -193,10 +256,11 @@
 ;; ;; ======= keymap    =========================================================
 ;; ;;
 (map!
- :nvi "C-k" #'kill-line                 ; 在正常、可视、插入模式下, C-k 删除当前行光标后的内容。
- :nvi "C-e" #'doom/forward-to-last-non-comment-or-eol ; 在正常、可视、插入模式下, C-e 去到行尾。
- :nvi "M-;" #'comment-dwim     ; 在正常、可视、插入模式下, M-; 在行尾添加注释。s-/  是对整行或选中区域进行注释或取消注释。
- :nvi "s-/" #'comment-line)     ; S代表Shift键盘；s代表Command键，默认s-/绑定到evil-commentary-line， 感觉没comment-line好用
+ ;; :nvi "C-k" #'kill-line                 ; 在正常、可视、插入模式下, C-k 删除当前行光标后的内容。
+ ;; :nvi "C-e" #'doom/forward-to-last-non-comment-or-eol ; 在正常、可视、插入模式下, C-e 去到行尾。
+ ;; :nvi "M-;" #'comment-dwim     ; 在正常、可视、插入模式下, M-; 在行尾添加注释。s-/  是对整行或选中区域进行注释或取消注释。
+ :nvi "s-/" #'comment-line     ; S代表Shift键盘；s代表Command键，默认s-/绑定到evilnc-comment-or-uncomment-lines， 感觉没comment-line好用
+ )
 
 
 
