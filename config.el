@@ -84,7 +84,7 @@
 ;;   (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
 
 (setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
-;; (setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
+(setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
 
 
 ;; ;; 可通过 M-x list-faces-display 来查看和显示有关的配置信息。
@@ -127,7 +127,7 @@
  '(org-level-7 ((t (:inherit outline-7 :height 1.2  )))) ; monokai-red "#F92672"
  '(org-level-8 ((t (:inherit outline-8 :height 1.2  )))) ; monokai-blue "#66D9EF"
 
- ;; '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
+ '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
  ;; '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
  ;; '(iedit-occurrence ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
 
