@@ -96,8 +96,8 @@
  ;; '(default ((t (:background "#0B2B2D"))))   ;; 把背景色改成 jonathan blow 使用的绿色背景: #0B2B2D
 
  ;; z a 折叠开关  z m 全部折叠  z r 展开所有折叠  z o 展开当前所在的折叠
- ;; '(+fold-hideshow-folded-face ((t (:inherit font-lock-comment-face :background "#3A4625" :foreground "red" :weight semi-light)))) ; 设置折叠的背景色
- ;; '(vimish-fold-overlay ((t (:inherit font-lock-comment-face :background "#3A4625" :foreground "red" :weight bold))))  ; 设置折叠的背景色
+ '(+fold-hideshow-folded-face ((t (:inherit font-lock-comment-face :background "#3A4625" :foreground "red" :weight semi-light)))) ; 设置折叠的背景色
+ '(vimish-fold-overlay ((t (:inherit font-lock-comment-face :background "#3A4625" :foreground "red" :weight bold))))  ; 设置折叠的背景色
 
  ;;  '(solaire-default-face ((t (:background "#0B2B2D"))))
  ;;  '(solaire-fringe-face ((t (:background "#0B2B2D"))))
