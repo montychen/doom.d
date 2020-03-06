@@ -19,7 +19,7 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 15))
-(setq doom-font (font-spec :family "JetBrains Mono" :size 15))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
+(setq doom-font (font-spec :family "JetBrains Mono" :size 16))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
 ;; (setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
 ;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
 
