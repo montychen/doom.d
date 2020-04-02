@@ -93,19 +93,20 @@
 ;;         monokai-highlight-line "black"    ; 修改monokai当前行的高亮背景色
 ;;         ))
 
-;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/
-;; (with-eval-after-load 'org
-;;   (defun org-buffer-face-mode-variable ()
-;;     (interactive)
-;;     (make-face 'my-org-face)  ;; 创建一个自己的face
-;;     (set-face-attribute 'my-org-face nil  ;; 配置这个face
-;;                         :font "Source Code Pro 16"  ;; 设置英文字体,  把org-mode的字体设的稍大一点
-;;                         ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
-;;                         ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
-;;                         )
-;;     (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
-;;     (buffer-face-mode))
-;;   (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
+;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/  https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
+;; 使用Ubuntu Mono它的英文字体宽度，是中文字体宽带的一半， 可以保证org表格中英文对齐，字体大小要设成偶数才能对齐，如16， 18.。。https://design.ubuntu.com/font/
+(with-eval-after-load 'org
+  (defun org-buffer-face-mode-variable ()
+    (interactive)
+    (make-face 'my-org-face)  ;; 创建一个自己的face
+    (set-face-attribute 'my-org-face nil  ;; 配置这个face
+                        :font "Ubuntu Mono 18"  ;; 把org-mode的字体设的稍大一点, 使用Ubuntu Mono，保证org里表格中英文对齐.字体大小要偶数才能对齐，如16， 18.。。
+                        ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
+                        ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
+                        )
+    (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
+    (buffer-face-mode))
+  (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
 
 (setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
 (setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
@@ -113,7 +114,7 @@
 
 ;; ;; 可通过 M-x list-faces-display 来查看和显示有关的配置信息。
 (custom-set-faces
- ;; '(org-table ((t (:foreground "#6c71c4" :family "Ubuntu Mono")))) ; 解决org-table中英混排对齐, Ubuntu Mono https://design.ubuntu.com/font/ 中文字体宽度是英文的2倍。 上面Fira Code字体大小也要设成14或16大小。不然也对不齐
+ ;; '(org-table ((t (:foreground "#6c71c4" :family "Ubuntu Mono")))) ; 解决org-table中英混排对齐, org-table 自己单独使用一个字体：Ubuntu Mono是英文是中文半宽长度的字体 https://design.ubuntu.com/font/ 中文字体宽度是英文的2倍。 上面Fira Code字体大小也要设成14或16大小。不然也对不齐
 
  '(hl-line ((t (:background "#000030" )))) ;; 修改当前行的高亮背景色。 M-x 运行describe-char -> Face: h1-line -> Background: #0D343E 可以看到这个值。通过(customize this face) 修改，被保存在 ~/.emacs.d/.local/custom.el 文件
  ;; '(font-lock-comment-face ((t (:foreground "#75715E"))))                 ;; 修改doom-molokai 注释行字体的前景色。 默认的感觉淡了点。
@@ -141,15 +142,17 @@
  ;; '(org-level-6 ((t (:inherit outline-6 :height 1.2  :foreground "#A6E22E")))) ; monokai-green "#A6E22E"
  ;; '(org-level-7 ((t (:inherit outline-7 :height 1.2  :foreground "#F92672")))) ; monokai-red "#F92672"
  ;; '(org-level-8 ((t (:inherit outline-8 :height 1.2  :foreground "#66D9EF")))) ; monokai-blue "#66D9EF"
- ;; 调整大小， 颜色不变。
- '(org-level-1 ((t (:inherit outline-1 :height 1.2  )))) ; monokai-orange "#FD971F"
- '(org-level-2 ((t (:inherit outline-2 :height 1.2  )))) ; monokai-green "#A6E22E"
- '(org-level-3 ((t (:inherit outline-3 :height 1.2  )))) ; monokai-blue "#66D9EF"
- '(org-level-4 ((t (:inherit outline-4 :height 1.2  )))) ; monokai-yellow "#E6DB74"
- '(org-level-5 ((t (:inherit outline-5 :height 1.2  )))) ; monokai-cyan "#A1EFE4"
- '(org-level-6 ((t (:inherit outline-6 :height 1.2  )))) ; monokai-green "#A6E22E"
- '(org-level-7 ((t (:inherit outline-7 :height 1.2  )))) ; monokai-red "#F92672"
- '(org-level-8 ((t (:inherit outline-8 :height 1.2  )))) ; monokai-blue "#66D9EF"
+ ;; 调整org标题字体大小， 颜色不变。
+ '(org-level-1 ((t (:inherit outline-1 :height 1.1  )))) ; monokai-orange "#FD971F"
+ '(org-level-2 ((t (:inherit outline-2 :height 1.1  )))) ; monokai-green "#A6E22E"
+ '(org-level-3 ((t (:inherit outline-3 :height 1.1  )))) ; monokai-blue "#66D9EF"
+ '(org-level-4 ((t (:inherit outline-4 :height 1.1  )))) ; monokai-yellow "#E6DB74"
+ '(org-level-5 ((t (:inherit outline-5 :height 1.1  )))) ; monokai-cyan "#A1EFE4"
+ '(org-level-6 ((t (:inherit outline-6 :height 1.1  )))) ; monokai-green "#A6E22E"
+ '(org-level-7 ((t (:inherit outline-7 :height 1.1  )))) ; monokai-red "#F92672"
+ '(org-level-8 ((t (:inherit outline-8 :height 1.1  )))) ; monokai-blue "#66D9EF"
+
+
 
  '(region ((t (:background "#FF9933" :foreground "black"))))  ;; 手动选中高亮颜色
  ;; '(evil-ex-lazy-highlight ((t (:background "#FF9933" :foreground "black"))))  ;; /搜索匹配高亮颜色
