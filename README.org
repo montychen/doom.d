@@ -1,28 +1,39 @@
-* 安装 emacs， mac 下推荐用 brew 安装 [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]]
+* 安装 emacs， mac 下推荐用 brew 安装
+** 先安装依赖
+#+begin_src bash
+# required dependencies
+brew install git ripgrep
+# optional dependencies
+brew install coreutils fd
+# Installs clang
+xcode-select --install
+#+end_src
+** 推荐安装 [[https://github.com/railwaycat/homebrew-emacsmacport][emacs-mac]]
+#+begin_src bash
+brew tap railwaycat/emacsmacport
+brew install emacs-mac --with-modules --with-rsvg --with-imagemagick --with-natural-title-bar
+rm -rf /Applications/Emacs.app
+ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
+#+end_src
+
+***  +不建议安装 [[https://github.com/d12frosted/homebrew-emacs-plus][emacs-plus]]+
 #+begin_src bash
 brew tap d12frosted/emacs-plus  # brew 有个默认的仓库，brew tap 你可以看成是第三方的仓库；tap仓库源默认是Github，但也不限制于这一个地方
 brew install emacs-plus --without-spacemacs-icon # 不用spacemacs的icon， 用回emacs原来的
 ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
 #+end_src
 
+
 * 安装 Doom Emacs Develop 分支
 
 1、安装
 #+begin_src bash
 mv ~/.emacs.d  ~/.emacs.d.bak   # 如果之前有安装其它版本的 emacs， 这里先备份配置文件。
-git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d # 强烈建议安装develop分支， master分支太久不更新。
+
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d   # 默认安装的是develop分支， master分支太久不更新。
+
+~/.emacs.d/bin/doom install
 #+end_src
-
-# 2、 在 doom 改用 *straight* 代替 *package* 后，下面这个就不能用了。
-
-# 编辑 ~/.emacs.d/core/core-packages.el 把源改成国内的源。下面用的是腾讯的源
-# #+begin_src elisp
-# `(("gnu"          . "http://mirrors.cloud.tencent.com/elpa/gnu/")
-#   ("melpa"        . "http://mirrors.cloud.tencent.com/elpa/melpa/")
-#   ("org"          . "http://mirrors.cloud.tencent.com/elpa/org/")))
-# #+end_src
-
-2、 运行  ~/.emacs.d/bin/doom install
 
 在终端下需要设置 vpn 代理翻墙才能安装成功， 终端下翻墙可参考  [[https://zhuanlan.zhihu.com/p/47849525][Max OSX 终端走shadowsocks代理]]
 
@@ -31,7 +42,7 @@ git clone -b develop https://github.com/hlissner/doom-emacs ~/.emacs.d # 强烈�
 - init.el
 - packages.el
   
-3、 编辑 ~/.bash_profile 文件，把 ~/.emacs.d/bin 加入 PATH 路径
+2、 编辑 ~/.bash_profile 文件，把 ~/.emacs.d/bin 加入 PATH 路径
 #+begin_src bash
 vi ~/.bash_profile
 ## doom emacs
@@ -42,7 +53,9 @@ export PATH=$PATH:~/.emacs.d/bin
 
 获取 doom 支持的命令 dooh help
 
-修改配置后要运行 doom refresh
+更新doom运行 doom upgrade
+
+修改配置后要运行 doom sync
 
 遇到问题可以运行 doom doctor
 
