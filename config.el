@@ -25,7 +25,7 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
-;; refresh' after modifying this file!
+;; sync' after modifying this file!
 
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
@@ -38,27 +38,30 @@
 ;;
 ;; + `doom-font'
 ;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'
+;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
+;;   presentations or streaming.
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 15))
-(setq doom-font (font-spec :family "JetBrains Mono" :size 16))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
+;; (setq doom-font (font-spec :family "monospace" :size 16))
+
+(setq doom-font (font-spec :family "Ubuntu Mono" :size 20)) ;; Ubuntu Mono英文字体宽度，是中文字体宽度的一半， 可以保证org表格中英文对齐，字体大小要设成偶数才能对齐，如16， 18.。。https://design.ubuntu.com/font/
+;; (setq doom-font (font-spec :family "JetBrains Mono" :size 18))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
 ;; (setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
 ;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. These are the defaults.
+;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
-;; (setq doom-theme 'doom-molokai)         ; 使用doom自带的monokai主题
 
-;; If you intend to use org, it is recommended you change this!
+;; If you use `org' and don't want your org files in the default location below,
+;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
-;; If you want to change the style of line numbers, change this to `relative' or
-;; `nil' to disable it:
+;; This determines the style of line numbers in effect. If set to `nil', line
+;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
 
@@ -67,8 +70,9 @@
 ;; - `load!' for loading external *.el files relative to this one
 ;; - `use-package' for configuring packages
 ;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', where Emacs
-;;   looks when you load packages with `require' or `use-package'.
+;; - `add-load-path!' for adding directories to the `load-path', relative to
+;;   this file. Emacs searches the `load-path' when you load packages with
+;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
 ;;
 ;; To get information about any of these functions/macros, move the cursor over
@@ -77,6 +81,9 @@
 ;;
 ;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
 ;; they are implemented.
+
+
+
 
 ;; ================================================================================
 ;; ================================================================================
@@ -95,20 +102,22 @@
 
 ;; 给org-mode单独设置字体, 稍大一点 参考：  https://pumpkinblog.top/post/org_set_fonts/  https://manateelazycat.github.io/emacs/2020/04/02/org-font.html
 ;; 使用Ubuntu Mono它的英文字体宽度，是中文字体宽带的一半， 可以保证org表格中英文对齐，字体大小要设成偶数才能对齐，如16， 18.。。https://design.ubuntu.com/font/
-(with-eval-after-load 'org
-  (defun org-buffer-face-mode-variable ()
-    (interactive)
-    (make-face 'my-org-face)  ;; 创建一个自己的face
-    (set-face-attribute 'my-org-face nil  ;; 配置这个face
-                        :font "Ubuntu Mono 18"  ;; 把org-mode的字体设的稍大一点, 使用Ubuntu Mono，保证org里表格中英文对齐.字体大小要偶数才能对齐，如16， 18.。。
-                        ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
-                        ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
-                        )
-    (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
-    (buffer-face-mode))
-  (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
+;; (with-eval-after-load 'org
+;;   (defun org-buffer-face-mode-variable ()
+;;     (interactive)
+;;     (make-face 'my-org-face)  ;; 创建一个自己的face
+;;     (set-face-attribute 'my-org-face nil  ;; 配置这个face
+;;                         :font "Ubuntu Mono 18"  ;; 把org-mode的字体设的稍大一点, 使用Ubuntu Mono，保证org里表格中英文对齐.字体大小要偶数才能对齐，如16， 18.。。
+;;                         ;; 设置中文字体，如果不需设置中文字体可以去掉这一行
+;;                         ;; :fontset (create-fontset-from-fontset-spec (concat "-*-*-*-*-*--*-*-*-*-*-*-fontset-org" ",han:翩翩体-简"))
+;;                         )
+;;     (setq buffer-face-mode-face 'my-org-face) ;; 指定buffer-face的face为自己定义的那个face
+;;     (buffer-face-mode))
+;;   (add-hook 'org-mode-hook 'org-buffer-face-mode-variable))   ;; org-mode-hook 这个 function
 
-(setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
+
+(setq initial-frame-alist (quote ((fullscreen . fullscreen))))   ;; 默认全屏充满
+;; (setq initial-frame-alist (quote ((fullscreen . maximized))))   ;; 默认全屏
 (setq evil-visual-state-cursor 'hbar)  ;; 默认是 hollow空心块， 会造成在手动选中高亮时，最后一个字符看不见，这里改成 hbar下划线。
 
 
@@ -179,6 +188,17 @@
 ;;   (global-centered-cursor-mode)
 ;;   )
 
+(use-package smart-input-source    ; 原生输入法切换: 汉字后面跟空格触发 inline english 区域; 光标离开区域，或者回车，关闭 inline english 区域。
+  :config
+  (setq smart-input-source-english-input-source
+        "com.apple.keylayout.US")
+  (setq smart-input-source-other-input-source
+        "com.sogou.inputmethod.sogou.pinyin")
+  (add-hook 'text-mode-hook #'smart-input-source-mode)
+  (add-hook 'prog-mode-hook #'smart-input-source-mode))
+
+
+
 ;; ;; ;; ======= 编辑   =========================================================
 ;; ;;
 ;; ;; evil-multiedit 方式: 使用 v 选中文本后，键入 R 可以进入多光标编辑模式. 这时使用 C-n C-p 可以在匹配文本中轮换，按 RET 反选当前匹配项.
@@ -224,7 +244,7 @@
 
 ;; ;; 在org，中英混排出现空格时，禁止自动折行生成真正的新行。
 (remove-hook 'org-mode-hook #'auto-fill-mode) ; 在新的doom 20191017版本中，这个好像不行了，只好用下面这个把 fill-column设一个大值
-(setq-default fill-column 2000)               ; org-mode模式，在超过fill-column值的列位置，插入空格，会导致硬换行|硬回车, 烦人，所以这里故意把它设大。
+(setq-default fill-column 1500)               ; org-mode模式，在超过fill-column值的列位置，插入空格，会导致硬换行|硬回车, 烦人，所以这里故意把它设大。
 
 ;; ;; ======= 搜索匹配    =========================================================
 ;; ;;
@@ -286,7 +306,7 @@
  ;; :nvi "C-k" #'kill-line                 ; 在正常、可视、插入模式下, C-k 删除当前行光标后的内容。
  ;; :nvi "C-e" #'doom/forward-to-last-non-comment-or-eol ; 在正常、可视、插入模式下, C-e 去到行尾。
  ;; :nvi "M-;" #'comment-dwim     ; 在正常、可视、插入模式下, M-; 在行尾添加注释。s-/  是对整行或选中区域进行注释或取消注释。
- :nvi "s-/" #'comment-line     ; S代表Shift键盘；s代表Command键，默认s-/绑定到evilnc-comment-or-uncomment-lines， 感觉没comment-line好用
+ ;; :nvi "s-/" #'comment-line     ; S代表Shift键盘；s代表Command键，默认s-/绑定到evilnc-comment-or-uncomment-lines， 感觉没comment-line好用
  )
 
 
