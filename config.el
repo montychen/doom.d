@@ -125,7 +125,7 @@
 (custom-set-faces
  ;; '(org-table ((t (:foreground "#6c71c4" :family "Ubuntu Mono")))) ; 解决org-table中英混排对齐, org-table 自己单独使用一个字体：Ubuntu Mono是英文是中文半宽长度的字体 https://design.ubuntu.com/font/ 中文字体宽度是英文的2倍。 上面Fira Code字体大小也要设成14或16大小。不然也对不齐
 
- '(hl-line ((t (:background "#000030" )))) ;; 修改当前行的高亮背景色。 M-x 运行describe-char -> Face: h1-line -> Background: #0D343E 可以看到这个值。通过(customize this face) 修改，被保存在 ~/.emacs.d/.local/custom.el 文件
+ '(hl-line ((t (:background "#0D343E" )))) ;; 修改当前行的高亮背景色。 M-x 运行describe-char -> Face: h1-line -> Background: #0D343E 可以看到这个值。通过(customize this face) 修改，被保存在 ~/.emacs.d/.local/custom.el 文件
  ;; '(font-lock-comment-face ((t (:foreground "#75715E"))))                 ;; 修改doom-molokai 注释行字体的前景色。 默认的感觉淡了点。
  ;; '(default ((t (:background "#0B2B2D"))))   ;; 把背景色改成 jonathan blow 使用的绿色背景: #0B2B2D
 
