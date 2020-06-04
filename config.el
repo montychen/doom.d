@@ -45,8 +45,8 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 16))
 
-(setq doom-font (font-spec :family "Ubuntu Mono" :size 20)) ;; Ubuntu Mono英文字体宽度，是中文字体宽度的一半， 可以保证org表格中英文对齐，字体大小要设成偶数才能对齐，如16， 18.。。https://design.ubuntu.com/font/
-;; (setq doom-font (font-spec :family "JetBrains Mono" :size 18))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
+;; (setq doom-font (font-spec :family "Ubuntu Mono" :size 20)) ;; Ubuntu Mono英文字体宽度，是中文字体宽度的一半， 可以保证org表格中英文对齐，字体大小要设成偶数才能对齐，如16， 18.。。https://design.ubuntu.com/font/
+(setq doom-font (font-spec :family "JetBrains Mono" :size 18))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
 ;; (setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
 ;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
 
@@ -191,12 +191,18 @@
 (use-package smart-input-source    ; 原生输入法切换: 汉字后面跟空格触发 inline english 区域; 光标离开区域，或者回车，关闭 inline english 区域。
   :config
   (setq smart-input-source-english-input-source
-        "com.apple.keylayout.US")
+        "com.apple.keylayout.US") 
   (setq smart-input-source-other-input-source
         "com.sogou.inputmethod.sogou.pinyin")
   (add-hook 'text-mode-hook #'smart-input-source-mode)
   (add-hook 'prog-mode-hook #'smart-input-source-mode))
 
+
+(use-package! valign    ; valign可以让Org Mode表格像素对齐，变宽字体也可以对齐。https://github.com/casouri/valign
+  :init
+  (require 'valign)
+  :hook
+  ('org-mode . #'valign-mode))
 
 
 ;; ;; ;; ======= 编辑   =========================================================
@@ -313,8 +319,8 @@
 
 (map! :leader
       (:prefix ("t" . "toggle")                               ;  SPC t 切换 toggle
-        ;; :desc "当前行居中"                  "-" #'centered-cursor-mode) ; 切换当前行居中
-        ;;         :desc "自动调整窗口大小"     "w" #'golden-ratio-mode; 切换自动调整当前窗口大小
-        ;; :desc "自动折行"         "v" #'visual-line-mode    ; 系统提供了word-wrap模块，启用后，可通过 SPC t w 切换。自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
-        ;;   ;;; deprecated      ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
-        ))
+       ;; :desc "当前行居中"                  "-" #'centered-cursor-mode) ; 切换当前行居中
+       ;;         :desc "自动调整窗口大小"     "w" #'golden-ratio-mode; 切换自动调整当前窗口大小
+       ;; :desc "自动折行"         "v" #'visual-line-mode    ; 系统提供了word-wrap模块，启用后，可通过 SPC t w 切换。自动折行，虚拟成n行，上下行、头尾移动方便。 toggle-truncate-lines自动折行，但逻辑上还是一行，不好用。
+       ;;   ;;; deprecated      ;; :desc "org显示内嵌的图片"       "m" #'org-toggle-inline-images ; 在org-mode下， 这个函数系统已经默认绑定到 z i
+       ))
