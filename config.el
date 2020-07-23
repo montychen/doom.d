@@ -188,14 +188,29 @@
 ;;   (global-centered-cursor-mode)
 ;;   )
 
-(use-package smart-input-source    ; 原生输入法切换: 汉字后面跟空格触发 inline english 区域; 光标离开区域，或者回车，关闭 inline english 区域。
+
+(use-package! sis   ; 原生输入法切换：smart-input-source ，配合evil使用更佳: 汉字后面跟空格触发 inline english 区域; 光标离开区域，或者回车，关闭 inline english 区域。
+  ;; :hook
+  ;; enable the /follow context/ and /inline region/ mode for specific buffers
+  ;; (((text-mode prog-mode) . sis-follow-context-mode)
+  ;;  ((text-mode prog-mode) . sis-inline-mode))
+
   :config
-  (setq smart-input-source-english-input-source
-        "com.apple.keylayout.US") 
-  (setq smart-input-source-other-input-source
-        "com.sogou.inputmethod.sogou.pinyin")
-  (add-hook 'text-mode-hook #'smart-input-source-mode)
-  (add-hook 'prog-mode-hook #'smart-input-source-mode))
+  (sis-ism-lazyman-config
+   ;; "com.apple.keylayout.ABC"
+   "com.apple.keylayout.US"
+   ;; "im.rime.inputmethod.Squirrel.Rime"
+   "com.sogou.inputmethod.sogou.pinyin")
+
+  ;; enable the /cursor color/ mode
+  (sis-global-cursor-color-mode t)
+  ;; enable the /respect/ mode
+  (sis-global-respect-mode t)
+  ;; enable the /follow context/ mode for all buffers
+  (sis-global-follow-context-mode t)
+  ;; enable the /inline english/ mode for all buffers
+  (sis-global-inline-mode t)
+  )
 
 
 (use-package! valign    ; valign可以让Org Mode表格像素对齐，变宽字体也可以对齐。https://github.com/casouri/valign

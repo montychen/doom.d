@@ -56,6 +56,6 @@
 
 (package! pangu-spacing :disable t)     ;在org，doom默认配置了在中英文间插入空格。我不想插入空格，禁用pangu-spacing包。
 
-(package! smart-input-source ) ;原生输入法切换：smart-input-source ，配合evil使用更佳
+(package! sis :recipe (:host github :repo "laishulu/emacs-smart-input-source")) ;原生输入法切换：smart-input-source ，配合evil使用更佳 https://github.com/laishulu/emacs-smart-input-source
 
 (package! valign :recipe (:host github :repo "casouri/valign")) ; valign可以让Org Mode表格像素对齐，变宽字体也可以对齐。https://github.com/casouri/valign
