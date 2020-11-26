@@ -8,7 +8,7 @@
 ;; zt zz zb： evil nomal 模式下，把当前行移动到屏幕顶部、总部、底部。
 ;; H  L:evil nomal 模式下，把光标移动到屏幕顶部， 底部。 gg是移动到到第一行， G是移动到最后一行。
 ;;
-;; 在evil normal模式  *  自动匹配光标下的单词，高亮显示， 可用n匹配下项。
+;; 在evil normal模式  * 或 S-3  自动搜索匹配光标下的单词，高亮显示， 可用n匹配下项。
 ;; / 绑定到evil-ex-search-forward：  用于需要手动输入的时候。
 ;;
 ;; 调整缩进、格式 C-M-\
@@ -45,10 +45,10 @@
 ;; font string. You generally only need these two:
 ;; (setq doom-font (font-spec :family "monospace" :size 16))
 
-;; (setq doom-font (font-spec :family "Ubuntu Mono" :size 20)) ;; Ubuntu Mono英文字体宽度，是中文字体宽度的一半， 可以保证org表格中英文对齐，字体大小要设成偶数才能对齐，如16， 18.。。https://design.ubuntu.com/font/
-(setq doom-font (font-spec :family "JetBrains Mono" :size 18))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
-;; (setq doom-font (font-spec :family "Fira Code" :size 15))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
-;; (setq doom-font (font-spec :family "Source Code Pro" :size 15))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
+;; (setq doom-font (font-spec :family "Ubuntu Mono" :size 21)) ;; Ubuntu Mono英文字体宽度，是中文字体宽度的一半， 可以保证org表格中英文对齐，字体大小要设成偶数才能对齐，如16， 18.。。https://design.ubuntu.com/font/
+ (setq doom-font (font-spec :family "JetBrains Mono" :size 19))  ;; 使用JetBrains Mono字体: https://www.jetbrains.com/lp/mono/
+;; (setq doom-font (font-spec :family "Fira Code" :size 16))  ;; 使用Fira Code字体: brew tap caskroom/fonts  brew cask install font-fira-code
+;; (setq doom-font (font-spec :family "Source Code Pro" :size 16))  ;; 使用Source Code Pro 字体  https://github.com/adobe-fonts/source-code-pro
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
