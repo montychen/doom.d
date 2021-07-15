@@ -1,5 +1,5 @@
 ;;; ============= doom emacs 常用指令  ==========================================
-;; S代表Shift键盘；s代表Command键，M代表option键盘
+;; S代表Shift键盘；s代表Command键，M代表option键盘, C代表Control键盘
 ;;
 ;; undo: u
 ;; redo: C-r 撤销undo
