@@ -282,6 +282,7 @@
 ;; ;; / 绑定到evil-ex-search-forward：  用于需要手动输入的时候。
 ;; ;; SPC / b 绑定到 counsel-grep-or-swiper ： 用于手动输入， 下面会有所有匹配结果的汇总。
 ;; ;; C-s 默认绑定到 isearch-forward: 不好用， swiper-isearch or swiper-isearch-thing-at-point 感觉没counsel-grep-or-swiper好用。
+;; ;; SPC s S 可以自动搜索光标下的单词、或选中的
 (defun dj@counsel-grep-or-swiper-at-point () ; 增强counsel-grep-or-swiper，默认可以自动搜索光标下的单词、或选中的。
   "C-s 默认绑定到 isearch-forward: 不好用。通过增强counsel-grep-or-swiper，可以自动搜索光标下的单词、或选中的。"
   (interactive)
