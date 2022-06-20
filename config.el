@@ -203,8 +203,8 @@
   (sis-ism-lazyman-config
   
    ;; English input source may be: "ABC", "US" or another one.
-   ;; "com.apple.keylayout.ABC"
-   "com.apple.keylayout.US"
+   "com.apple.keylayout.ABC"
+   ;; "com.apple.keylayout.US"
 
    ;; Other language input source: "rime", "sogou" or another one.
    ;; "im.rime.inputmethod.Squirrel.Rime"
