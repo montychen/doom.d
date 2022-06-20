@@ -1,3 +1,17 @@
+
+* 安装依赖包
+
+** 中文输入法自动切换，系统依赖
+#+begin_src bash
+brew tap laishulu/macism
+brew install macism
+#+end_src
+
+
+** markdown preview markdown 预览系统依赖
+brew install discount
+
+
 * 安装 emacs， mac 下推荐用 brew 安装
 ** 先安装依赖
 #+begin_src bash
@@ -53,7 +67,7 @@ export PATH=$PATH:~/.emacs.d/bin
 
 获取 doom 支持的命令 dooh help
 
-更新doom运行 doom upgrade
+更新 doom 运行 doom upgrade
 
 修改配置后要运行 doom sync
 
