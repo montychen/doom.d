@@ -4,28 +4,26 @@
 ** 中文输入法自动切换，系统依赖
 #+begin_src bash
 brew tap laishulu/macism
-brew install macism
+brew install macism             # 在终端运行 macism 就可以查看到当前输入法的名字
 #+end_src
 
 
 ** markdown preview markdown 预览系统依赖
 brew install discount
 
-
-* 安装 emacs， mac 下推荐用 brew 安装
-** 先安装依赖
+** 安装emacs依赖
 #+begin_src bash
-# required dependencies
 brew install git ripgrep
-# optional dependencies
 brew install coreutils fd
-# Installs clang
 xcode-select --install
 #+end_src
+
+* 安装 emacs， mac 下推荐用 brew 安装
 ** 推荐安装 [[https://github.com/railwaycat/homebrew-emacsmacport][emacs-mac]]
 #+begin_src bash
 brew tap railwaycat/emacsmacport
-brew install emacs-mac --with-modules --with-rsvg --with-imagemagick --with-natural-title-bar # 添加后面安装选项，是为了支持原生输入法切换：smart-input-source
+# 添加后面安装选项，是为了支持原生输入法切换：semacs-smart-input-source
+brew install emacs-mac --with-modules --with-rsvg --with-imagemagick --with-natural-title-bar
 rm -rf /Applications/Emacs.app
 ln -s /usr/local/opt/emacs-mac/Emacs.app /Applications/Emacs.app
 #+end_src
@@ -44,8 +42,7 @@ ln -s /usr/local/opt/emacs-plus/Emacs.app /Applications/Emacs.app
 #+begin_src bash
 mv ~/.emacs.d  ~/.emacs.d.bak   # 如果之前有安装其它版本的 emacs， 这里先备份配置文件。
 
-git clone https://github.com/hlissner/doom-emacs ~/.emacs.d   # 默认安装的是develop分支， master分支太久不更新。
-
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.emacs.d # 默认安装的是develop分支， master分支太久不更新。
 ~/.emacs.d/bin/doom install
 #+end_src
 
